@@ -1,0 +1,183 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+	"metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.5.6.12127",
+      "templateHash": "12437160846353643080"
+    }
+  },
+    "parameters": {
+        "location": {
+            "type": "string",
+			"defaultValue": "centralus",
+			"metadata": {
+			"description": "Location of the resources"
+			}
+        },
+		"RGName": {
+            "type": "string",
+			"defaultValue": "ResourceGroup Name",
+			"metadata": {
+			"description": "Resource Group where the VNET will reside"
+			}
+		},
+		"NetworkRGName": {
+            "type": "string",
+			"defaultValue": "US_CE_RG_NetworkServices",
+			"metadata": {
+			"description": "Resource Group for Network Resources."
+			}
+		},
+        "virtualNetworkName": {
+            "type": "string",
+			"defaultValue": "US_CE_VNETNAME",
+			"metadata": {
+			"description": "Virtual Network Name"
+			}
+        },
+		"virtualNetworkAddressRange": {
+            "type": "string",
+			"defaultValue": "10.0.0.0/24",
+			"metadata": {
+			"description": "Address space assigned to the virtual network"
+			}
+        },
+        "subnet0_name": {
+            "type": "string",
+			"defaultValue": "US_CE_VNETNAME_Subnet",
+			"metadata": {
+			"description": "Name of the subnet to be assigned to the virtual network"
+			}
+        },
+        "subnet0_addressRange": {
+            "type": "string",
+			"defaultValue": "10.0.0.0/24",
+			"metadata": {
+			"description": "Address range to allocate to the subnet. Must be within the Virtual Network Address range"
+			}
+        },
+        "subnet1_name": {
+            "type": "string",
+			"defaultValue": "US_CE_VNETNAME_Subnet",
+			"metadata": {
+			"description": "Name of the subnet to be assigned to the virtual network"
+			}
+        },
+        "subnet1_addressRange": {
+            "type": "string",
+			"defaultValue": "10.0.0.0/24",
+			"metadata": {
+			"description": "Address range to allocate to the subnet. Must be within the Virtual Network Address range"
+			}
+        },
+		"routeTableID": {
+            "type": "string",
+			"defaultValue": "US_CE_RouteTable",
+			"metadata": {
+			"description": "Routing table to bind the subnet to send the traffic through the Hub"
+			}
+		},
+		"NetworkHUBname": {
+			"type": "string",
+			"defaultValue": "US_CE_Network_Hub",
+			"metadata": {
+			"description": "Network Hub name to create the vNET peering."
+			}
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('virtualNetworkName')]",
+            "type": "Microsoft.Network/VirtualNetworks",
+            "apiVersion": "2021-01-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Name ": "[parameters('virtualNetworkName')]",
+                "Company ": "Company",
+                "Cost Center": "infrastructure",
+                "Domain ": "Company_CoreServices",
+                "Environment ": "Production",
+                "Classification ": "Core Services",
+                "Tier ": "General",
+                "Email Address ": "email@local",
+                "Uptime ": "24X7 (prod) ",
+                "Confidentiality ": "Private ",
+                "Subscription ": "Prod"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('virtualNetworkAddressRange')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnet0_name')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet0_addressRange')]",
+							"routeTable": {"id": "[resourceId(parameters('NetworkRGName'), 'Microsoft.Network/routeTables', parameters('routeTableID'))]"}
+                        }
+                    },
+					{
+                        "name": "[parameters('subnet1_name')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnet1_addressRange')]",
+							"routeTable": {"id": "[resourceId(parameters('NetworkRGName'), 'Microsoft.Network/routeTables', parameters('routeTableID'))]"}
+                        }
+                    }
+                ]
+            }
+        },
+		{
+		"type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+		"apiVersion": "2020-05-01",
+		"name": "[format('{0}/{1}', parameters('virtualNetworkName'), format('{0}-{1}', parameters('virtualNetworkName'), parameters('NetworkHUBname')))]",
+		"properties": {
+			"allowVirtualNetworkAccess": true,
+			"allowForwardedTraffic": false,
+			"allowGatewayTransit": false,
+			"useRemoteGateways": false,
+			"remoteVirtualNetwork": {
+			"id": "[resourceId(parameters('NetworkRGName'), 'Microsoft.Network/virtualNetworks', parameters('NetworkHUBname'))]"
+			}
+		},
+		"dependsOn": [
+			"[resourceId(parameters('RGName'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+			]
+		},
+		{
+		"type": "Microsoft.Resources/deployments",
+		"apiVersion": "2021-04-01",
+		"name": "PeeringOnNetworkHUB",
+		"resourceGroup": "[parameters('NetworkRGName')]",
+		"properties": {
+			"mode": "Incremental",
+			"template": {
+			    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+				"contentVersion": "1.0.0.0",
+				"parameters": {},
+				"variables": {},
+				"resources": [
+					{
+					"type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+					"apiVersion": "2020-05-01",
+					"name": "[format('{0}/{1}', parameters('NetworkHUBname'), format('{0}-{1}', parameters('NetworkHUBname'), parameters('virtualNetworkName')))]",
+					"properties": {
+						"allowVirtualNetworkAccess": true,
+						"allowForwardedTraffic": false,
+						"allowGatewayTransit": false,
+						"useRemoteGateways": false,
+						"remoteVirtualNetwork": {
+						"id": "[resourceId(parameters('RGName'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+						}
+					}
+					}
+				]
+			}
+		}
+		}
+    ]
+}
