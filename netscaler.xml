@@ -1,0 +1,64 @@
+<NotepadPlus>
+    <UserLang name="Citrix Netscaler" ext="conf" udlVersion="2.1">
+        <Settings>
+            <Global caseIgnored="no" allowFoldOfComments="yes" foldCompact="no" forcePureLC="1" decimalSeparator="0" />
+            <Prefix Keywords1="no" Keywords2="no" Keywords3="no" Keywords4="yes" Keywords5="yes" Keywords6="no" Keywords7="no" Keywords8="no" />
+        </Settings>
+        <KeywordLists>
+            <Keywords name="Comments">00# 01 02 03 04</Keywords>
+            <Keywords name="Numbers, prefix1"></Keywords>
+            <Keywords name="Numbers, prefix2"></Keywords>
+            <Keywords name="Numbers, extras1"></Keywords>
+            <Keywords name="Numbers, extras2"></Keywords>
+            <Keywords name="Numbers, suffix1"></Keywords>
+            <Keywords name="Numbers, suffix2"></Keywords>
+            <Keywords name="Numbers, range"></Keywords>
+            <Keywords name="Operators1">&amp;&amp; ||</Keywords>
+            <Keywords name="Operators2"></Keywords>
+            <Keywords name="Folders in code1, open"></Keywords>
+            <Keywords name="Folders in code1, middle"></Keywords>
+            <Keywords name="Folders in code1, close"></Keywords>
+            <Keywords name="Folders in code2, open"></Keywords>
+            <Keywords name="Folders in code2, middle"></Keywords>
+            <Keywords name="Folders in code2, close"></Keywords>
+            <Keywords name="Folders in comment, open"></Keywords>
+            <Keywords name="Folders in comment, middle"></Keywords>
+            <Keywords name="Folders in comment, close"></Keywords>
+            <Keywords name="Keywords1">add bind set remove rm show sh unbind enable disable link unset show stat rename apply</Keywords>
+            <Keywords name="Keywords2">aaa accessprofile acl acl6 action64 adfsProxyProfile adm allowedngsticketprofile alwaysONProfile analytics appAlgParam appflow appfw appqoe appsattributes appsprofile arpparam assignment audit authentication  authorization autoscale awsParam azureKeyVault bot bridgegroup bridgetable cache callhome callout capacity captchaAction certAction certParams certPolicy channel citrixAuthAction cli clientlessAccessPolicy clientlessAccessProfile clientprofile cloud cloudtunnel cluster cmdPolicy cmp collectionparam collector confidField consoleloginprompt contentGroup contentinspection cpuparam cqaparam cr credential crl cs db dbProfile detectionaction detectionpolicy dfaAction dfaPolicy dhcpParams diameter dns dynamicRouting emailAction encryptionKey encryptionParams endpoint engineId epaAction expression extendedmemoryparam extension feo fieldType fips forwardingSession gslb gxInterface HA hmacKey hostName httpBand httpCallout httphdrlogprofile httpParam ica icapProfile identifier inat inatparam instance interface ip6 ip6TunnelParam ipsec ipsecalg ipTunnel ipTunnelParam ipv6 kcdAccount key L2Param L3Param L4Param lacp latencyprofile lb ldapParams learningsettings licenseparameters licenseproxyserver licenseserver limitIdentifier lldp localPolicy locationParameter   lsn manager messageaction metricTable mib mxRec nameServer nat64 nat64param nd6RAvariables negotiateAction negotiatePolicy netbridge ngsparameter noAuthAction nodegroup ns nslogAction nslogParams nslogPolicy ntp OAuthAction OAuthIdPPolicy OAuthIDPProfile ocspResponder onLinkIPv6Prefix option paramInternal partition pbr pbr6 pcoipProfile pcoipVserverProfile pcp  policy64 preauthenticationaction preauthenticationparameter preauthenticationpolicy prompt protocol protocol ptp pushService quic quicBridge radiusAction radiusInterface radiusNode radiusParams radiusPolicy rateControl rdp reputation responder rewrite rnat rnat6 rnatparam route route6 router rpcNode rsskeytype rtspalgprofile samlAction samlIdPPolicy samlIdPProfile samlPolicy server serverprofile serviceFunction sessionParameter sipalgprofile sipParameters site  smpp snmp soaRec spillover spParams srvRec ssl ssoprofile storefrontAuthAction stream stringmap subscriber syslogAction syslogParams syslogPolicy system tacacsAction tacacsParams tacacsPolicy tcpbufParam tcpParam timeout timer tm transform transportprofile tunnel uiinternal url urlAction urlfiltering urlPolicy variable videooptimization vlan vpn vpxparam vrID vrID6 vrIDParam vxlan webAuthAction webAuthPolicy weblogparam xmlnamespace zone</Keywords>
+            <Keywords name="Keywords3">vserver trafficPolicy trafficAction group parameter global monitor policylabel profile param patset sessionPolicy sessionAction action ip httpProfile tcpProfile tcpProfile smartAccessPolicy smartAccessProfile netProfile dtlsProfile authnProfile certKey ldapPolicy ldapAction trap alarm community user mode feature loginSchema loginSchemaPolicy portaltheme Policy policy nsRec  addRec cipher service serviceGroup otpparameter syslogGlobal nslogGlobal</Keywords>
+            <Keywords name="Keywords4">-</Keywords>
+            <Keywords name="Keywords5">http. sys. client. analytics. diameter. radius. subscriber. sip. dns. text. mysql. mssql. mqtt. aaa.</Keywords>
+            <Keywords name="Keywords6">NONE ON ALLOW DENY OFF ENABLED DISABLED NEXT END YES</Keywords>
+            <Keywords name="Keywords7"></Keywords>
+            <Keywords name="Keywords8">HTTP SSL DNS ANY TCP Done SSL_BRIDGE -targetLBVserver -rule -action -serviceName -domainName TRUE FALSE ns_true ns_false NS_TRUE NS_FALSE</Keywords>
+            <Keywords name="Delimiters">00&quot; 01\ 02&quot; 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23</Keywords>
+        </KeywordLists>
+        <Styles>
+            <WordsStyle name="DEFAULT" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="COMMENTS" fgColor="008000" bgColor="FFFF80" fontStyle="0" nesting="117702655" />
+            <WordsStyle name="LINE COMMENTS" fgColor="A6A6A6" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="NUMBERS" fgColor="0000C1" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS1" fgColor="008000" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS2" fgColor="0000C1" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS3" fgColor="FF8000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS4" fgColor="AE7D0B" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS5" fgColor="0E6927" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS6" fgColor="3752AC" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS7" fgColor="008040" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS8" fgColor="CA0000" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="OPERATORS" fgColor="800080" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE1" fgColor="804000" bgColor="FFFFFF" fontStyle="1" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE2" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="FOLDER IN COMMENT" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS1" fgColor="0E6927" bgColor="FFFFFF" fontStyle="0" nesting="16793600" />
+            <WordsStyle name="DELIMITERS2" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS3" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS4" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS5" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS6" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS7" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS8" fgColor="000000" bgColor="FFFFFF" fontStyle="0" nesting="0" />
+        </Styles>
+    </UserLang>
+</NotepadPlus>
